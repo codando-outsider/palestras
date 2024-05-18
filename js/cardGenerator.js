@@ -57,16 +57,21 @@ function generateEvent(container, title, description, date, eventLink, recording
 		return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 	}
 
+	// Set portrait image path by matching file with lecturer's name and surname
 	var lecturerName = description.split(/[ ,]/).slice(0, 2).join("_");
 	lecturerName = removeDiacritics(lecturerName).toLowerCase();
 	var portraitSrc = ("url(img/portrait/") + lecturerName + (".jpeg");
 	portrait.style.backgroundImage = portraitSrc;
 
+	var dateNumber = document.querySelector(".card-element-text-highlight");
+	var dateMonth = document.querySelector(".card-element-text");
 	var linkButton = document.createElement("a");
 	var eventDate = new Date(date).setUTCHours(0, 0, 0, 0);
 	var currentDate = new Date().setUTCHours(0, 0, 0, 0);
 
 	if (eventDate >= currentDate) {
+		dateNumber.textContent = "HOJE!";
+		dateMonth.style.display = "none;";
 		linkButton.classList.add("card-button", "button-event");
 		linkButton.href = eventLink;
 		linkButton.textContent = "Acessar";
