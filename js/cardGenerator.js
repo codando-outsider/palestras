@@ -71,7 +71,7 @@ function generateEvent(container, title, description, date, eventLink, recording
 
 	if (eventDate >= currentDate) {
 		dateNumber.textContent = "HOJE!";
-		dateMonth.style.display = "none;";
+		dateMonth.style.display = "none";
 		linkButton.classList.add("card-button", "button-event");
 		linkButton.href = eventLink;
 		linkButton.textContent = "Acessar";
