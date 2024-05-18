@@ -57,10 +57,12 @@ function generateEvent(container, title, description, date, eventLink, recording
 		return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 	}
 
-	// Set portrait image path by matching file with lecturer's name and surname
-	var lecturerName = description.split(/[ ,]/).slice(0, 2).join("_");
-	lecturerName = removeDiacritics(lecturerName).toLowerCase();
-	var portraitSrc = ("url(img/portrait/") + lecturerName + (".jpeg");
+	// Set portrait image path by matching filename with guest's name and surname extracted from the card description
+	// E.g. "John Doe, renowned professor at..." => Path must be "img/portrait/john_doe"
+	// Extension must be .JPEG
+	var guestName = description.split(/[ ,]/).slice(0, 2).join("_");
+	guestName = removeDiacritics(guestName).toLowerCase();
+	var portraitSrc = ("url(img/portrait/") + guestName + (".jpeg");
 	portrait.style.backgroundImage = portraitSrc;
 
 //	var dateNumber = document.getElementsByClassName("day");
@@ -99,7 +101,7 @@ function generateEvent(container, title, description, date, eventLink, recording
 	insertEventInOrder(container, cardDiv, eventDate);
 }
 
-// Order events chronologically
+// Order events chronologically, highest at the top
 function insertEventInOrder(container, newEvent) {
 	var events = container.querySelectorAll(".card-section");
 

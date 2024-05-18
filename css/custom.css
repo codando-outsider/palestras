@@ -67,7 +67,7 @@ body {
 }
 
 #external > .grid-container {
-	grid-template-columns: repeat(4, 1fr) !important;
+	grid-template-columns: repeat(4, 1fr);
 }
 
 #external a {
@@ -90,7 +90,7 @@ body {
 		margin-top: 6rem;
 	}
 
-	/* Fine adjustments */
+	/* Adjust misalignments */
 	#external i {
 		padding-right: 0.8rem;
 		font-size: 25px;
@@ -104,6 +104,7 @@ body {
 	}
 
 	#external .link-label {
+		display: inline;
 		transform: translateY(-1px);
 	}
 
@@ -127,14 +128,9 @@ footer.grid-container p {
 
 @media (width >= 600px) {
 	footer.grid-container {
-		grid-template-columns: 2fr 4fr 2fr !important;
+		grid-template-columns: 2fr 4fr 2fr;
 		max-width: unset;
 		min-height: 8vw;
-	}
-
-	footer.grid-container > div:nth-child(2) {
-		max-width: 960px !important;
-		padding: 2rem 0;
 	}
 
 	footer.grid-container p {
