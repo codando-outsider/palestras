@@ -1,7 +1,7 @@
 // Build HTML fetching info from cardInfo.js
 function generateEvent(container, title, description, date, eventLink, recordingLink) {
 	var cardDiv = document.createElement("div");
-	cardDiv.classList.add("card");
+	cardDiv.classList.add("card-section");
 
 	var hiddenDate = document.createElement("input");
 	hiddenDate.setAttribute("type", "hidden");
