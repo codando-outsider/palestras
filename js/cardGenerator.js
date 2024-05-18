@@ -63,8 +63,8 @@ function generateEvent(container, title, description, date, eventLink, recording
 	var portraitSrc = ("url(img/portrait/") + lecturerName + (".jpeg");
 	portrait.style.backgroundImage = portraitSrc;
 
-	var dateNumber = document.querySelector(".card-element-text-highlight");
-	var dateMonth = document.querySelector(".card-element-text");
+	var dateNumber = document.getElementsByClassName("card-element-text-highlight");
+	var dateMonth = document.getElementsByClassName("card-element-text";
 	var linkButton = document.createElement("a");
 	var eventDate = new Date(date).setUTCHours(0, 0, 0, 0);
 	var currentDate = new Date().setUTCHours(0, 0, 0, 0);
