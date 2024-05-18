@@ -8,19 +8,19 @@ function generateEvent(container, title, description, date, eventLink, recording
 	hiddenDate.setAttribute("value", date);
 	cardDiv.appendChild(hiddenDate);
 
-	var dateDiv = document.createElement("div");
-	dateDiv.classList.add("card-element-date");
-	var dateHighlightDiv = document.createElement("div");
-	dateHighlightDiv.classList.add("card-element-text-highlight");
-	dateHighlightDiv.textContent = date.split("-")[2];
-	var dateTextDiv = document.createElement("div");
-	dateTextDiv.classList.add("card-element-text");
-	dateTextDiv.textContent = date.split("-")[1];
-	dateDiv.appendChild(dateHighlightDiv);
-	dateDiv.appendChild(dateTextDiv);
+	var cardDate = document.createElement("div");
+	cardDate.classList.add("card-date");
+	var dateDay = document.createElement("div");
+	dateDay.classList.add("day");
+	dateDay.textContent = date.split("-")[2];
+	var dateMonth = document.createElement("div");
+	dateMonth.classList.add("month");
+	dateMonth.textContent = date.split("-")[1];
+	cardDate.appendChild(dateDay);
+	cardDate.appendChild(dateMonth);
 
-	var blockWrapper = document.createElement("div");
-	blockWrapper.classList.add("card-block-wrapper");
+	var cardMain = document.createElement("div");
+	cardMain.classList.add("card-main");
 
 	var animRight = document.createElement("span");
 	animRight.classList.add("animRight")
@@ -30,24 +30,24 @@ function generateEvent(container, title, description, date, eventLink, recording
 	animLeft.classList.add("animLeft")
 	var animUp = document.createElement("span");
 	animUp.classList.add("animUp")
-	blockWrapper.appendChild(animRight);
-	blockWrapper.appendChild(animDown);
-	blockWrapper.appendChild(animLeft);
-	blockWrapper.appendChild(animUp);
+	cardMain.appendChild(animRight);
+	cardMain.appendChild(animDown);
+	cardMain.appendChild(animLeft);
+	cardMain.appendChild(animUp);
 
-	var blockPrimary = document.createElement("div");
-	blockPrimary.classList.add("card-block", "card-block-primary");
-	var titleHeading = document.createElement("h3");
-	titleHeading.classList.add("card-title");
-	titleHeading.textContent = title;
-	var subtitlePara = document.createElement("p");
-	subtitlePara.classList.add("card-subtitle");
-	subtitlePara.textContent = description;
-	blockPrimary.appendChild(titleHeading);
-	blockPrimary.appendChild(subtitlePara);
+	var cardInfo = document.createElement("div");
+	cardInfo.classList.add("card", "card-main");
+	var cardTitle = document.createElement("h3");
+	cardTitle.classList.add("card-title");
+	cardTitle.textContent = title;
+	var cardSubtitle = document.createElement("p");
+	cardSubtitle.classList.add("card-subtitle");
+	cardSubtitle.textContent = description;
+	cardInfo.appendChild(cardTitle);
+	cardInfo.appendChild(cardSubtitle);
 
-	var blockSecondary = document.createElement("div");
-	blockSecondary.classList.add("card-block", "card-block-secondary");
+	var cardAside = document.createElement("div");
+	cardAside.classList.add("card", "card-aside");
 
 	var portrait = document.createElement("div");
 	portrait.classList.add("portrait");
@@ -63,15 +63,15 @@ function generateEvent(container, title, description, date, eventLink, recording
 	var portraitSrc = ("url(img/portrait/") + lecturerName + (".jpeg");
 	portrait.style.backgroundImage = portraitSrc;
 
-	var dateNumber = document.getElementsByClassName("card-element-text-highlight");
-	// var dateMonth = document.getElementsByClassName("card-element-text");
+//	var dateNumber = document.getElementsByClassName("day");
+//	var dateMonth = document.getElementsByClassName("month");
 	var linkButton = document.createElement("a");
 	var eventDate = new Date(date).setUTCHours(0, 0, 0, 0);
 	var currentDate = new Date().setUTCHours(0, 0, 0, 0);
 
 	if (eventDate >= currentDate) {
-		dateNumber.textContent = "HOJE!";
-		// dateMonth.style.display = "none";
+//		dateNumber.textContent = "HOJE!";
+//		dateMonth.style.display = "none";
 		linkButton.classList.add("card-button", "button-event");
 		linkButton.href = eventLink;
 		linkButton.textContent = "Acessar";
@@ -81,27 +81,27 @@ function generateEvent(container, title, description, date, eventLink, recording
 		linkButton.textContent = "Gravação";
 	}
 
-	blockSecondary.appendChild(portrait);
-	blockSecondary.appendChild(linkButton);
+	cardAside.appendChild(portrait);
+	cardAside.appendChild(linkButton);
 
-	blockWrapper.appendChild(blockPrimary);
-	blockWrapper.appendChild(blockSecondary);
+	cardMain.appendChild(cardInfo);
+	cardMain.appendChild(cardAside);
 
 	if (eventDate < currentDate) {
 		cardDiv.classList.add("finished-event");
 	} else if (eventDate === currentDate) {
-		blockWrapper.classList.add("current-event");
+		cardMain.classList.add("current-event");
 	}
 
-	cardDiv.appendChild(dateDiv);
-	cardDiv.appendChild(blockWrapper);
+	cardDiv.appendChild(cardDate);
+	cardDiv.appendChild(cardMain);
 
 	insertEventInOrder(container, cardDiv, eventDate);
 }
 
 // Order events chronologically
 function insertEventInOrder(container, newEvent) {
-	var events = container.querySelectorAll(".card");
+	var events = container.querySelectorAll(".card-section");
 
 	if (events.length === 0) {
 		container.appendChild(newEvent);
