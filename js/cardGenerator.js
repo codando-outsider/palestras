@@ -36,7 +36,7 @@ function generateEvent(container, title, description, date, eventLink, recording
 	cardMain.appendChild(animUp);
 
 	var cardInfo = document.createElement("div");
-	cardInfo.classList.add("card", "card-main");
+	cardInfo.classList.add("card", "card-info");
 	var cardTitle = document.createElement("h3");
 	cardTitle.classList.add("card-title");
 	cardTitle.textContent = title;
