@@ -80,11 +80,11 @@
 	pointer-events: none;
 }
 
-.day {
+.card-day {
 	font-size: 32px;
 }
 
-.month {
+.card-month {
 	font-size: 16px;
 }
 
@@ -94,12 +94,12 @@
 	flex-basis: 100%;
 }
 
-.card {
+.card-block {
 	padding: 20px;
 	background-color: rgb(30, 30, 30, 0.6);
 }
 
-.card > *:last-child {
+.card-block > *:last-child {
 	margin-bottom: 0;
 }
 
@@ -136,10 +136,9 @@
 }
 
 
-/* ---- Primary ---- */
+/* ---- Main ---- */
 .card-title {
 	margin: 0;
-	margin-bottom: 1.3em;
 	font-weight: bold;
 	font-size: 16px;
 	text-align: center;
@@ -147,12 +146,8 @@
 	/*text-transform: capitalize;*/
 }
 
-.card-subtitle {
+.card-summary {
 	display: none;
-}
-
-.card-title + .card-subtitle {
-	margin-top: -0.6em;
 }
 
 @media (width >= 400px) {
@@ -166,7 +161,7 @@
 		text-align: left;
 		text-wrap: wrap;
 	}
-	.card-subtitle {
+	.card-summary {
 		display: block;
 		color: #aaa;
 		text-align: justify;
@@ -175,7 +170,7 @@
 }
 
 
-/* ---- Secondary ---- */
+/* ---- Aside ---- */
 .portrait {
 	width: 120px;
 	height: 120px;
@@ -317,5 +312,55 @@
 	}
 	100% {
 		transform: translateY(-100%);
+	}
+}
+
+
+/* ---- Accordion ---- */
+details {
+	background-color: #303030;
+	color: white;
+	font-size: 1.5rem;
+}
+
+summary {
+	display: flex;
+	justify-content: space-between;
+	padding: 0.5em 1.3rem;
+	color: white;
+	font-weight: bold;
+}
+
+summary::before {
+	content: "\002B ";
+}
+
+summary::-webkit-details-marker {
+	display: none;
+}
+
+details[open] summary::before {
+	content: "\00D7 ";
+}
+
+details[open] div {
+	padding: 5px 50px 5px 20px;
+}
+
+details[open] summary {
+	border-bottom: 1px solid #aaa;
+	margin-bottom: 0.5em;
+}
+
+details[open] summary ~ * {
+	animation: fade-in 1s ease-in;
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
 	}
 }

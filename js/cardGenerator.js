@@ -1,20 +1,21 @@
 // Build HTML fetching info from cardInfo.js
-function generateEvent(container, title, description, date, eventLink, recordingLink) {
-	var cardDiv = document.createElement("div");
-	cardDiv.classList.add("card-section");
+function generateEvent(container, title, summary, date, eventLink, recordingLink) {
+	var cardSection = document.createElement("div");
+	cardSection.classList.add("card-section");
 
 	var hiddenDate = document.createElement("input");
 	hiddenDate.setAttribute("type", "hidden");
 	hiddenDate.setAttribute("value", date);
-	cardDiv.appendChild(hiddenDate);
+	cardSection.appendChild(hiddenDate);
 
 	var cardDate = document.createElement("div");
 	cardDate.classList.add("card-date");
+
 	var dateDay = document.createElement("div");
-	dateDay.classList.add("day");
+	dateDay.classList.add("card-day");
 	dateDay.textContent = date.split("-")[2];
 	var dateMonth = document.createElement("div");
-	dateMonth.classList.add("month");
+	dateMonth.classList.add("card-month");
 	dateMonth.textContent = date.split("-")[1];
 	cardDate.appendChild(dateDay);
 	cardDate.appendChild(dateMonth);
@@ -36,44 +37,41 @@ function generateEvent(container, title, description, date, eventLink, recording
 	cardMain.appendChild(animUp);
 
 	var cardInfo = document.createElement("div");
-	cardInfo.classList.add("card", "card-info");
+	cardInfo.classList.add("card-block", "card-info");
+
 	var cardTitle = document.createElement("h3");
 	cardTitle.classList.add("card-title");
 	cardTitle.textContent = title;
-	var cardSubtitle = document.createElement("p");
-	cardSubtitle.classList.add("card-subtitle");
-	cardSubtitle.textContent = description;
+	var cardSummary = document.createElement("p");
+	cardSummary.classList.add("card-summary");
+	cardSummary.textContent = summary;
 	cardInfo.appendChild(cardTitle);
-	cardInfo.appendChild(cardSubtitle);
+	cardInfo.appendChild(cardSummary);
 
 	var cardAside = document.createElement("div");
-	cardAside.classList.add("card", "card-aside");
+	cardAside.classList.add("card-block", "card-aside");
 
-	var portrait = document.createElement("div");
-	portrait.classList.add("portrait");
+	var guestPortrait = document.createElement("div");
+	guestPortrait.classList.add("portrait");
 
 	// Normalize vowels
 	function removeDiacritics(str) {
 		return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 	}
 
-	// Set portrait image path by matching filename with guest's name and surname extracted from the card description
+	// Set portrait image path by matching filename with guest's name and surname extracted from the card summary
 	// E.g. "John Doe, renowned professor at..." => Path must be "img/portrait/john_doe"
 	// Extension must be .JPEG
-	var guestName = description.split(/[ ,]/).slice(0, 2).join("_");
+	var guestName = summary.split(/[ ,]/).slice(0, 2).join("_");
 	guestName = removeDiacritics(guestName).toLowerCase();
 	var portraitSrc = ("url(img/portrait/") + guestName + (".jpeg");
-	portrait.style.backgroundImage = portraitSrc;
+	guestPortrait.style.backgroundImage = portraitSrc;
 
-//	var dateNumber = document.getElementsByClassName("day");
-//	var dateMonth = document.getElementsByClassName("month");
 	var linkButton = document.createElement("a");
 	var eventDate = new Date(date).setUTCHours(0, 0, 0, 0);
 	var currentDate = new Date().setUTCHours(0, 0, 0, 0);
 
 	if (eventDate >= currentDate) {
-//		dateNumber.textContent = "HOJE!";
-//		dateMonth.style.display = "none";
 		linkButton.classList.add("card-button", "button-event");
 		linkButton.href = eventLink;
 		linkButton.textContent = "Acessar";
@@ -83,26 +81,43 @@ function generateEvent(container, title, description, date, eventLink, recording
 		linkButton.textContent = "Gravação";
 	}
 
-	cardAside.appendChild(portrait);
+	cardAside.appendChild(guestPortrait);
 	cardAside.appendChild(linkButton);
+
+	var cardAudience = document.createElement("details");
+	cardAudience.classList.add("card-block", "card-audience");
+
+	var audienceHeader = document.createElement("summary");
+
+	var audienceHeaderText = document.createElement("span");
+	audienceHeaderText.textContent = "Público-alvo";
+
+	var tagsContainer = document.createElement("div");
+	var tagSubject = document.createElement("p");
+
+	audienceHeader.appendChild(audienceHeaderText);
+	tagsContainer.appendChild(tagSubject);
+	cardAudience.appendChild(audienceHeader);
+	cardAudience.appendChild(tagsContainer);
 
 	cardMain.appendChild(cardInfo);
 	cardMain.appendChild(cardAside);
+	cardMain.appendChild(cardAudience);
 
 	if (eventDate < currentDate) {
-		cardDiv.classList.add("finished-event");
+		cardSection.classList.add("finished-event");
 	} else if (eventDate === currentDate) {
 		cardMain.classList.add("current-event");
 	}
 
-	cardDiv.appendChild(cardDate);
-	cardDiv.appendChild(cardMain);
+	cardSection.appendChild(cardDate);
+	cardSection.appendChild(cardMain);
 
-	insertEventInOrder(container, cardDiv, eventDate);
+	insertEventsInOrder(container, cardSection, eventDate);
 }
 
 // Order events chronologically, highest at the top
-function insertEventInOrder(container, newEvent) {
+function insertEventsInOrder(container, newEvent) {
 	var events = container.querySelectorAll(".card-section");
 
 	if (events.length === 0) {
