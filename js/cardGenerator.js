@@ -88,15 +88,22 @@ function generateEvent(container, title, summary, date, eventLink, recordingLink
 	cardAudience.classList.add("card-block", "card-audience");
 
 	var audienceHeader = document.createElement("summary");
-
 	var audienceHeaderText = document.createElement("span");
 	audienceHeaderText.textContent = "Público-alvo";
+	audienceHeader.appendChild(audienceHeaderText);
 
 	var tagsContainer = document.createElement("div");
-	var tagSubject = document.createElement("p");
 
-	audienceHeader.appendChild(audienceHeaderText);
-	tagsContainer.appendChild(tagSubject);
+		// Dummy tags
+		var cardTag1 = document.createElement("div");
+		cardTag1.classList.add("tag", "codando");
+		cardTag1.textContent = "Codando";
+		var cardTag2 = document.createElement("div");
+		cardTag2.classList.add("tag", "negociando");
+		cardTag2.textContent = "Negociando";
+		tagsContainer.appendChild(cardTag1);
+		tagsContainer.appendChild(cardTag2);
+
 	cardAudience.appendChild(audienceHeader);
 	cardAudience.appendChild(tagsContainer);
 
