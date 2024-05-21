@@ -260,15 +260,6 @@ details[open] summary ~ * {
 	animation: fade-in 1s ease-in;
 }
 
-details[open] div {
-	padding: 5px 10px;
-}
-
-details[open] p {
-	display: flex;
-	flex-direction: row;
-}
-
 @keyframes fade-in {
 	0% {
 		opacity: 0;
@@ -281,11 +272,13 @@ details[open] p {
 .card-tags {
 	display: flex;
 	flex-direction: row;
+	padding: 20px 0 0 10px;
 }
 
 .tag {
 	width: fit-content;
-	margin-left: 5px;
+	padding: 5px 10px;
+	margin-right: 10px;
 	background-color: var(--theme);
 	border: 1px solid color-mix(in srgb, var(--theme), white 25%);
 	border-radius: 20px;
