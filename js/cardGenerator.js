@@ -93,6 +93,7 @@ function generateEvent(container, title, summary, date, eventLink, recordingLink
 	audienceHeader.appendChild(audienceHeaderText);
 
 	var tagsContainer = document.createElement("div");
+	tagsContainer.classList.add("card-tags");
 
 		// Dummy tags
 		var cardTag1 = document.createElement("div");
