@@ -285,7 +285,7 @@ details[open] p {
 
 .tag {
 	width: fit-content;
-	margin: 0 5px;
+	margin-left: 5px;
 	background-color: var(--theme);
 	border: 1px solid color-mix(in srgb, var(--theme), white 25%);
 	border-radius: 20px;
