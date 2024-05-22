@@ -89,7 +89,12 @@
 
 .card-main {
 	display: grid;
-	grid-template: repeat(2, 1fr);
+	grid-template-columns: 3fr 1fr;
+	grid-template-areas:
+		"info side"
+		"info side"
+		"audi audi";
+	width: 100%;
 }
 
 .card-block {
@@ -102,22 +107,23 @@
 }
 
 .card-info {
-	flex: 1;
+	grid-area: info;
 	padding-bottom: 0;
 	pointer-events: none;
 }
 
 .card-aside {
+	grid-area: side;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
 	align-items: center;
-	padding-top: 0;
 }
 
 .card-audience {
-	grid-area: auto / span 3;
+	grid-area: audi;
+	display: none;
 	padding-top: 0;
+	padding-bottom: 0;
 }
 
 @media (width >= 600px) {
@@ -244,10 +250,6 @@ summary::before {
 	transition: transform 0.2s;
 }
 
-summary::-webkit-details-marker {
-	display: none;
-}
-
 details[open] summary::before {
 	transform: rotate(90deg);
 }
@@ -261,57 +263,55 @@ details[open] summary ~ * {
 }
 
 @keyframes fade-in {
-	0% {
+	from {
 		opacity: 0;
 	}
-	100% {
-		opacity: 1;
+	to {
+		opacity: var(--opacity);	/* Needs a var so the text doesn't flash if details[open] + .finished-event */
 	}
 }
 
 .card-tags {
 	display: flex;
-	flex-direction: row;
-	padding: 20px 0 0 10px;
+	flex-flow: row wrap;
 }
 
 .tag {
 	width: fit-content;
-	padding: 5px 10px;
-	margin-right: 10px;
-	background-color: var(--theme);
-	border: 1px solid color-mix(in srgb, var(--theme), white 25%);
-	border-radius: 20px;
+	margin: 0 5px 10px 0;
+	padding: 2px 10px;
+	background: linear-gradient(var(--theme), color-mix(in srgb, var(--theme), black 70%));
+	border-radius: 999px;
 	font-size: 12px;
 	pointer-events: none;
 }
 
 .codando {
-	--theme: indianred;
+	--theme: hotpink;
 }
 
 .comunicando {
-	--theme: mediumorchid;
+	--theme: blank;
 }
 
 .cuidando {
-	--theme: khaki;
+	--theme: blank;
 }
 
 .desembolando {
-	--theme: darkorange;
+	--theme: blank;
 }
 
 .endireitando {
-	--theme: black;
+	--theme: blank;
 }
 
 .engenheirando {
-	--theme: midnightblue;
+	--theme: blank;
 }
 
 .ensinando {
-	--theme: steelblue;
+	--theme: blank;
 }
 
 .negociando {
@@ -319,17 +319,18 @@ details[open] summary ~ * {
 }
 
 .projetando {
-	--theme: magenta;
+	--theme: blank;
 }
 
 .veterinando {
-	--theme: seagreen;
+	--theme: blank;
 }
 
 
 /* ---- Finished event ---- */
 .finished-event :is(.card-date, .card-info, .card-audience) * {
-	opacity: 0.5;
+	--opacity: 0.5;
+	opacity: var(--opacity);
 }
 
 .finished-event .portrait {
