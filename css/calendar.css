@@ -287,31 +287,31 @@ details[open] summary ~ * {
 }
 
 .codando {
-	--theme: hotpink;
+	--theme: indianred;
 }
 
 .comunicando {
-	--theme: blank;
+	--theme: mediumorchid;
 }
 
 .cuidando {
-	--theme: blank;
+	--theme: khaki;
 }
 
 .desembolando {
-	--theme: blank;
+	--theme: darkorange;
 }
 
 .endireitando {
-	--theme: blank;
+	--theme: black;
 }
 
 .engenheirando {
-	--theme: blank;
+	--theme: midnightblue;
 }
 
 .ensinando {
-	--theme: blank;
+	--theme: steelblue;
 }
 
 .negociando {
@@ -319,11 +319,11 @@ details[open] summary ~ * {
 }
 
 .projetando {
-	--theme: blank;
+	--theme: magenta;
 }
 
 .veterinando {
-	--theme: blank;
+	--theme: seagreen;
 }
 
 
