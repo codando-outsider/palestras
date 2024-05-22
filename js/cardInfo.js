@@ -4,7 +4,7 @@ generateEvent(
 	container,
 	"Liderança em Gestão de Projetos",
 	"Patrícia Balla, engenheira de petróleo e líder de Engenharia de Processos na Shell com vasta experiência na indústria de exploração e produção, irá discutir os maiores desafios enfrentados por jovens profissionais em cargos de liderança, bem como as oportunidades de crescimento e desenvolvimento profissional. Abordando a singularidade desta indústria dominada pelo setor masculino, irá destacar a importância da diversidade de gênero e a contribuição única que as mulheres trazem para o setor.",
-	"2024-05-20",
+	"2024-05-28",
 	"https://www.sympla.com.br/evento-online/lideranca-em-gestao-de-projetos/2431759",
 	"https://animaeducacao.zoom.us/rec/share/424f6kqENH9_UFHYSQqFHZ3NlkEUQeZG19MXGdhk-EhAdDNekdQS1oE_n5vwpsnR.8Alocgj6n5auBP0_"
 );
@@ -12,7 +12,7 @@ generateEvent(
 	container,
 	"Preparados ou Desafiados? Educação e Mercado de Trabalho",
 	"Marcos Toledo, autoridade nos campos da Educação e do Direito com vasta experiência acadêmica e prática, irá compartilhar insights valiosos sobre como navegar no mundo profissional, destacando a importância de uma educação relevante e adaptável em meio às exigências do mercado contemporâneo.",
-	"2024-05-23",
+	"2024-05-22",
 	"https://www.sympla.com.br/evento-online/preparados-ou-desafiados-educacao-e-o-mercado-de-trabalho/2425667",
 	"https://animaeducacao.zoom.us/rec/share/pQKH1VL7TNRMIXxTXX6pBEdMpKFKspiZQe7i84pMAqTKOVZszE9TnStMt1EFZuA.MKHeRUWGv4u85mSn"
 );
