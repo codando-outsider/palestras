@@ -88,55 +88,15 @@ function generateEvent(container, title, summary, date, eventLink, recordingLink
 	cardAudience.classList.add("card-block", "card-audience");
 
 	var audienceHeader = document.createElement("summary");
+
 	var audienceHeaderText = document.createElement("span");
 	audienceHeaderText.textContent = "Público-alvo";
-	audienceHeader.appendChild(audienceHeaderText);
 
 	var tagsContainer = document.createElement("div");
-	tagsContainer.classList.add("card-tags");
+	var tagSubject = document.createElement("p");
 
-		// Dummy tags
-		var cardTag1 = document.createElement("div");
-		cardTag1.classList.add("tag", "codando");
-		cardTag1.textContent = "Codando";
-		var cardTag2 = document.createElement("div");
-		cardTag2.classList.add("tag", "comunicando");
-		cardTag2.textContent = "Comunicando";
-		var cardTag3 = document.createElement("div");
-		cardTag3.classList.add("tag", "cuidando");
-		cardTag3.textContent = "Cuidando";
-		var cardTag4 = document.createElement("div");
-		cardTag4.classList.add("tag", "desembolando");
-		cardTag4.textContent = "Desembolando";
-		var cardTag5 = document.createElement("div");
-		cardTag5.classList.add("tag", "endireitando");
-		cardTag5.textContent = "Endireitando";
-		var cardTag6 = document.createElement("div");
-		cardTag6.classList.add("tag", "engenheirando");
-		cardTag6.textContent = "Engenheirando";
-		var cardTag7 = document.createElement("div");
-		cardTag7.classList.add("tag", "ensinando");
-		cardTag7.textContent = "Ensinando";
-		var cardTag8 = document.createElement("div");
-		cardTag8.classList.add("tag", "negociando");
-		cardTag8.textContent = "Negociando";
-		var cardTag9 = document.createElement("div");
-		cardTag9.classList.add("tag", "projetando");
-		cardTag9.textContent = "Projetando";
-		var cardTag10 = document.createElement("div");
-		cardTag10.classList.add("tag", "veterinando");
-		cardTag10.textContent = "Veterinando";
-		tagsContainer.appendChild(cardTag1);
-		tagsContainer.appendChild(cardTag2);
-		tagsContainer.appendChild(cardTag3);
-		tagsContainer.appendChild(cardTag4);
-		tagsContainer.appendChild(cardTag5);
-		tagsContainer.appendChild(cardTag6);
-		tagsContainer.appendChild(cardTag7);
-		tagsContainer.appendChild(cardTag8);
-		tagsContainer.appendChild(cardTag9);
-		tagsContainer.appendChild(cardTag10);
-
+	audienceHeader.appendChild(audienceHeaderText);
+	tagsContainer.appendChild(tagSubject);
 	cardAudience.appendChild(audienceHeader);
 	cardAudience.appendChild(tagsContainer);
 
