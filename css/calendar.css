@@ -122,7 +122,6 @@
 .card-audience {
 	grid-area: audi;
 	padding-top: 0;
-	padding-bottom: 0;
 }
 
 @media (width >= 600px) {
